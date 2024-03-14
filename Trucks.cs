@@ -10,13 +10,20 @@ namespace Console_Project_Fleet_of_Vehicles
     class Trucks : FleetVehicles
     {
         private string bedLiner;
-        private string bedLength;
-
-        public Trucks(string mk, string md, int yr, string co, string en, string bLi, string bLe)
-            : base(mk, md, yr, co, en)
+        private int bedLength;
+        // constructor
+        public Trucks(int yr, string clr, string mk, string md, string en, int d, int bLe, string bLi)
+            : base(yr, clr, mk, md, en, d)
         {
             this.bedLiner = bLi;
             this.bedLength = bLe;
+        }
+        // getters
+        //public int getYear() { return base.getYear(); }
+        // display method
+        public override string ToString()
+        {
+            return ($"{base.ToString()}bed length {bedLength}, {bedLiner}");
         }
     }
 }

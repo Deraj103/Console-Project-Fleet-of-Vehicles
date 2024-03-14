@@ -14,19 +14,23 @@ namespace Console_Project_Fleet_of_Vehicles
         private int year;
         private string color;
         private string engine;
-
-        public FleetVehicles(string mk, string md, int yr, string co, string en)
+        private int doors;
+        // constructor
+        public FleetVehicles(int yr, string clr, string mk, string md, string en, int d)
         {
             this.make = mk;
             this.model = md;
             this.year = yr;
-            this.color = co;
+            this.color = clr;
             this.engine = en;
+            this.doors = d;
         }
-
+        // getters
+        public int getYear() { return year; }
+        // display method
         public override string ToString()
         {
-            return ToString();
+            return ($"{year} {color} {make} {model}, {engine} engine, {doors} doors, ");
         }
     }
 }
