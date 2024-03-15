@@ -27,6 +27,7 @@ namespace Console_Project_Fleet_of_Vehicles
         }
         // getters
         public int getYear() { return year; }
+        public string getEngine() { return engine; }
         // display method
         public override string ToString()
         {

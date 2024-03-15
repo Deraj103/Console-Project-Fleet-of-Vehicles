@@ -48,7 +48,9 @@ namespace Console_Project_Fleet_of_Vehicles
             do
             {
                 Write("\nWhat type of vehicle do you want to see, (c)Car or (t)Truck or (d)Done? ");
-                reply = ReadLine();
+                // trims user's reply 
+                char[] replyTrim = { ' ', 'o', 'n', 'e' };
+                reply = ReadLine().ToLower().Trim(replyTrim);
 
                 if (reply == "c")
                 {
@@ -72,32 +74,49 @@ namespace Console_Project_Fleet_of_Vehicles
                 }
                 else if (reply == "d")
                 {
-                    Write("Which year vehicle? ");
+                    Write("\nWhich year vehicle? ");
                     year = int.Parse(ReadLine());
-                    findIt(vehicleArray, year);
+                    findYear(vehicleArray, year);
+
+                    Write("\nWhat engine type? ");
+                    string engineType = ReadLine();
+                    findEngineType(vehicleArray, engineType);
                 }
                 else
                 {
                     WriteLine("That is an invalid option, please try providing a differen answer.");
                 }
-
             } while (reply != "d");
 
             WriteLine("\nPress any key to continue...");
             ReadKey();
         }
-        // helper method to find the customer from the arrayList
-        public static int findIt(ArrayList vehicleArray, int year)
+        // helper method(s) to find and display a car(s) with a certain year and or feature
+        public static void findYear(ArrayList vehicleArray, int year)
         {
-            for (int i = 0; i < vehicleArray.Count; i++)
+            int i = 0;
+            foreach (FleetVehicles vehicle in vehicleArray)
             {
                 FleetVehicles entry = (FleetVehicles)vehicleArray[i];
                 if (year.Equals(entry.getYear()))
                 {
-                    return i;
+                    WriteLine($"{vehicle.ToString()}");
                 }
+                i++;
             }
-            return -1;
+        }
+        public static void findEngineType(ArrayList vehicleArray, string engineType)
+        {
+            int i = 0;
+            foreach (FleetVehicles vehicle in vehicleArray)
+            {
+                FleetVehicles entry = (FleetVehicles)vehicleArray[i];
+                if (engineType.Equals(entry.getEngine()))
+                {
+                    WriteLine($"{vehicle.ToString()}");
+                }
+                i++;
+            }
         }
     }
 }
